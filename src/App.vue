@@ -22,7 +22,7 @@ export default {
       1000
     );
     
-    const light = new THREE.AmbiantLight(0xFFFFFF, 2);
+    const light = new THREE.AmbientLight(0xFFFFFF, 2);
     scene.add(light);
     
     const geometry = new THREE.BoxGeometry(1, 1, 1);
