@@ -21,7 +21,10 @@ export default {
       0.1,
       1000
     );
-
+    
+    const light = new THREE.AmbiantLight(0xFFFFFF, 2);
+    scene.add(light);
+    
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     const cube = new THREE.Mesh(geometry, material);
