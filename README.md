@@ -102,7 +102,7 @@ Base project for further tests
 
 11. After it, you can run the app using the command line `npm run dev`, and you should have a rotating cube in the middle of your browser. The base project is now complete!
 
-#### Three.js USDZLoader() tests
+### Three.js USDZLoader() tests
 
 1. /buster_drone/scene.gltf  
    a) USDZLoader  
