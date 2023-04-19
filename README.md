@@ -107,7 +107,7 @@ Base project for further tests
 - Add import:
 `import { USDZLoader } from "three/examples/jsm/loaders/USDZLoader";`
 - Add this code snippet to the end:
-```
+```js
 const usdzLoader = new USDZLoader();
     usdzLoader.load(
       "/Room.usdz",
