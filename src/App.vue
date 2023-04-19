@@ -6,8 +6,17 @@
 
 <script>
 import * as THREE from "three";
+import { USDZLoader } from "three-usdz-loader";
+import axios from "axios";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 export default {
+  data() {
+    return {
+      modelData: null,
+      loading: true,
+    };
+  },
   mounted() {
     const canvas = this.$refs.canvas;
     const renderer = new THREE.WebGLRenderer({ canvas });
@@ -21,21 +30,17 @@ export default {
       0.1,
       1000
     );
-    
-    const light = new THREE.AmbiantLight(0xFFFFFF, 2);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+
+    const light = new THREE.AmbientLight(0xffffff, 2);
     scene.add(light);
-    
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
 
     camera.position.z = 5;
+    controls.update();
 
     function animate() {
       requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
       renderer.render(scene, camera);
     }
 
@@ -48,6 +53,27 @@ export default {
     }
 
     window.addEventListener("resize", onWindowResize);
+
+    const loader = new USDZLoader();
+    const group = new THREE.Group();
+    scene.add(group);
+    axios
+      .get("/livingroom.usdz", {
+        responseType: "arraybuffer",
+      })
+      .then((response) => {
+        this.modelData = response.data;
+        this.loading = false;
+        // do something with the model data here
+        loadUSDZ(this.modelData, group);
+      });
+
+    async function loadUSDZ(modelData, group) {
+      const file = new File([modelData], "model.usdz", {
+        type: "model/vnd.usdz+zip",
+      });
+      return await loader.loadFile(file, group);
+    }
   },
 };
 </script>
