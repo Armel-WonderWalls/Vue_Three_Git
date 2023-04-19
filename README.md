@@ -4,7 +4,7 @@
 # Creating Vue.js + Three.js app
 
 ### Step 1 : Create the project
-0. Install Node.js  
+0. Install Node.js 16.0 or higher.
 1. Open a new Project on `Visual Studio Code`.  
 Open Folder > Select where you want to save your project.
 2. On Visual Studio Code, Open a new Terminal and execute `npm init vue@latest`.  
