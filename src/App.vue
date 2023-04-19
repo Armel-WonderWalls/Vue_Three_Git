@@ -7,7 +7,7 @@
 <script>
 import * as THREE from "three";
 import { USDZLoader } from "three/examples/jsm/loaders/USDZLoader";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+//import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 export default {
   mounted() {
@@ -57,18 +57,19 @@ export default {
     );
 
     //GLTF LOADING IS WORKING...
-    const gltfLoader = new GLTFLoader();
-    gltfLoader.load(
-      "/buster_drone/scene.gltf",
-      (gltf) => {
-        console.log(gltf);
-        scene.add(gltf.scene);
-      },
-      undefined,
-      (error) => {
-        console.error(error);
-      }
-    );
+
+    // const gltfLoader = new GLTFLoader();
+    // gltfLoader.load(
+    //   "/buster_drone/scene.gltf",
+    //   (gltf) => {
+    //     console.log(gltf);
+    //     scene.add(gltf.scene);
+    //   },
+    //   undefined,
+    //   (error) => {
+    //     console.error(error);
+    //   }
+    // );
   },
 };
 </script>
