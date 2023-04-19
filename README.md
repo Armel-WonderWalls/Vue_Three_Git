@@ -114,8 +114,6 @@ Base project for further tests
    `THREE.USDZLoader: No usda file found.`  
    b) GLTFLoader  
    `SyntaxError: Unexpected token 'P', ... is not valid JSON`  
-   Conclusion, `USDZLoader` can load .zip file but the model architecture is not supported (`usdc` instead of `usda`).  
-   `GLTFLoader` can't load .zip files.  
 3. /buster_drone.usdz  
    Same result as previous .zip test.  
 4. /Room.usdz  
