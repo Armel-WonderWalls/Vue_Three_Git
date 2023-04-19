@@ -6,6 +6,7 @@
 
 <script>
 import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 export default {
   mounted() {
@@ -21,16 +22,19 @@ export default {
       0.1,
       1000
     );
-    
-    const light = new THREE.AmbientLight(0xFFFFFF, 2);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+
+    const light = new THREE.AmbientLight(0xffffff, 2);
     scene.add(light);
-    
+
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
     camera.position.z = 5;
+    controls.update();
 
     function animate() {
       requestAnimationFrame(animate);
