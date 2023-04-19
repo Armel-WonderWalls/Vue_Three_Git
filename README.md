@@ -4,10 +4,10 @@
 # Creating Vue.js + Three.js app
 
 ### Step 1 : Create the project
-0. Install Node.js 16.0 or higher.
-1. Open a new Project on `Visual Studio Code`.  
+0. Install **Node.js 16.0** or higher.
+1. Open a new Project on **Visual Studio Code**.  
 Open Folder > Select where you want to save your project.
-2. On Visual Studio Code, Open a new Terminal and execute `npm init vue@latest`.  
+2. On **Visual Studio Code**, Open a new Terminal and execute `npm init vue@latest`.  
 Name your project and package then skip (answer `no`) all the following questions. It will create the base of the app.
 ### Step 2 : Clean the boilerplate
 3. Delete the useless boilerplates.  
@@ -19,7 +19,7 @@ c) You can remove everything within the `src/assets` and `components`.
 5. Install all the modules who comes with the boilerplate `npm install`
 6. Add `three.js` using `npm install three`.
 ### Step 4 : Add code
-Within <template> brackets in `App.vue` add the `canvas` which will contain our `three.js` scene:
+Within `<template>` brackets in `App.vue` add the `canvas` which will contain our `three.js` scene:
 ```html
 <template>
   <canvas ref="canvas"></canvas>
@@ -72,7 +72,7 @@ export default {
 };
 </script>
 ```
-Remove the "setup" from <style> tag and add the following code withing it.
+Remove the "scoped" from <style> tag and add the following code withing it.
 ```html
 body {
   margin: 0;
