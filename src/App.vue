@@ -6,6 +6,8 @@
 
 <script>
 import * as THREE from "three";
+import { USDZLoader } from "three/examples/jsm/loaders/USDZLoader";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 export default {
   mounted() {
@@ -22,17 +24,12 @@ export default {
       1000
     );
 
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
+    const light = new THREE.AmbientLight(0xffffff, 2);
+    scene.add(light);
     camera.position.z = 5;
 
     function animate() {
       requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
       renderer.render(scene, camera);
     }
 
@@ -45,6 +42,33 @@ export default {
     }
 
     window.addEventListener("resize", onWindowResize);
+
+    const usdzLoader = new USDZLoader();
+    usdzLoader.load(
+      "/Room.usdz",
+      (usdz) => {
+        console.log(usdz);
+        scene.add(usdz.scene);
+      },
+      undefined,
+      (error) => {
+        console.error(error);
+      }
+    );
+
+    //GLTF LOADING IS WORKING...
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.load(
+      "/buster_drone/scene.gltf",
+      (gltf) => {
+        console.log(gltf);
+        scene.add(gltf.scene);
+      },
+      undefined,
+      (error) => {
+        console.error(error);
+      }
+    );
   },
 };
 </script>
