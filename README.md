@@ -104,17 +104,24 @@ Base project for further tests
 
 #### Three.js USDZLoader() tests
 
-1. /buster_drone/scene.gltf
-   a) USDZLoader
-   `invalid zip file`
-   b) GLTFLoader
-
-2. /buster_drone.zip
-   a) USDZLoader
-   `THREE.USDZLoader: No usda file found.`
-   b) GLTFLoader
-   `SyntaxError: Unexpected token 'P', ... is not valid JSON`
+1. /buster_drone/scene.gltf  
+   a) USDZLoader  
+   `invalid zip file`  
+   b) GLTFLoader  
+   `Working fine!`  
+2. /buster_drone.zip  
+   a) USDZLoader  
+   `THREE.USDZLoader: No usda file found.`  
+   b) GLTFLoader  
+   `SyntaxError: Unexpected token 'P', ... is not valid JSON`  
    Conclusion, `USDZLoader` can load .zip file but the model architecture is not supported (`usdc` instead of `usda`).  
-   `GLTFLoader` can't load .zip files.
-3. /buster_drone.usdz
-   Same result as previous .zip test.
+   `GLTFLoader` can't load .zip files.  
+3. /buster_drone.usdz  
+   Same result as previous .zip test.  
+4. /Room.usdz  
+   a) USDZLoader  
+   `TypeError: Cannot use 'in' operator to search for 'def ""' in undefined`  
+   b) GLTFLoader  
+   `SyntaxError: Unexpected token 'P', ... is not valid JSON`  
+   
+ 
