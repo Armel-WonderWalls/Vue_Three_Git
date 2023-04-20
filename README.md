@@ -12,9 +12,9 @@ Name your project and package then skip (answer `no`) all the following question
 
 ### Step 2: Clean the Boilerplate
 4. Delete the useless boilerplates.  
-a) Remove `import './assets/main.css'` from `main.js`.  
-b) Delete everything within the `<script setup>`, `<template>`, and `<style scoped>` tags in `App.vue`.  
-c) You can remove everything within the `src/assets` and `components`.
+a) Remove `import './assets/main.css'` from `/src/main.js`.  
+b) Delete everything within the `<script setup>`, `<template>`, and `<style scoped>` tags in `/src/App.vue`.  
+c) You can remove everything within the `/src/assets` and `components`.
 
 ### Step 3: Install Modules
 5. Now the boilerplate is empty, move your terminal location into the newly created project folder `cd project-name`.  
@@ -100,8 +100,7 @@ c) You can remove everything within the `src/assets` and `components`.
 
 10. Remove the "scoped" from `<style>` tag and add the following code within it:
 
-    ```html
-    <style>
+    ```css
     /* Set margin to 0 to remove body's margin and hide any overflow scrollbars */
     body {
       margin: 0;
@@ -113,7 +112,6 @@ c) You can remove everything within the `src/assets` and `components`.
       width: 100vw;
       height: 100vh;
     }
-    </style>
     ```
 
 11. After it, you can run the app using the command line `npm run dev`, and you should have a rotating cube in the middle of your browser. The base project is now complete!
