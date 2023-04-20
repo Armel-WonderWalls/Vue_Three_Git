@@ -1,6 +1,5 @@
 # Vue.js + Three.js
-Base project for further tests  
-Three.js_USDZLoader branch:  
+**Three.js_USDZLoader** branch.  
 This branch is used to test the use of **Three.js** official Add-on `USDZLoader`.
 
 ## Creating a Vue.js + Three.js App
