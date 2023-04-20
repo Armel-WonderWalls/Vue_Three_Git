@@ -74,6 +74,7 @@ export default {
       });
       return await loader.loadFile(file, group);
     }
+    console.log(group);
   },
 };
 </script>
