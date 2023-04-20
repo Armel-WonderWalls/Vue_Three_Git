@@ -119,10 +119,15 @@ c) You can remove everything within the `/src/assets` and `components`.
 
 ### Three.js USDZLoader() tests
 
-12. Add import at the start of the script:  
-`import { USDZLoader } from "three/examples/jsm/loaders/USDZLoader";`
+12. Add import at the start of the script:
+
+      ```js
+      import { USDZLoader } from "three/examples/jsm/loaders/USDZLoader";
+      ```
+
 13. Remove code for the cube creation and animation.
 14. Add this code snippet to the end of the script:
+
       ```js
       // Create a new USDZ loader instance
       const usdzLoader = new USDZLoader();
