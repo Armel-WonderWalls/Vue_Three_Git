@@ -45,7 +45,7 @@ export default {
 
     const usdzLoader = new USDZLoader();
     usdzLoader.load(
-      "/Room.usdz",
+      "/livingroom.usdz",
       (usdz) => {
         console.log(usdz);
         scene.add(usdz.scene);
