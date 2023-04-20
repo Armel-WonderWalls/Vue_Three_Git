@@ -102,10 +102,12 @@ c) You can remove everything within the `src/assets` and `components`.
 
     ```html
     <style>
+    /* Set margin to 0 to remove body's margin and hide any overflow scrollbars */
     body {
       margin: 0;
       overflow: hidden;
     }
+    /* Display canvas as a block element and make it fill the entire viewport */
     canvas {
       display: block;
       width: 100vw;
