@@ -1,6 +1,6 @@
 # Vue.js + Three.js
-Base project for further tests
-
+Base project for further tests  
+Ponahoum's three-usdz-loader package branch
 ## Creating a Vue.js + Three.js App
 
 ### Step 1: Create the Project
@@ -122,46 +122,48 @@ c) You can remove everything within the `/src/assets` and `components`.
    `npm install three-usdz-loader`  
 2. Add import to `App.vue` <script>:  
    `import { USDZLoader } from "three-usdz-loader"`  
-3. create a new instance of `USDZLoader` and call the function `loadFile()` on it  
-   a) `loadFile()` is an asynchronous function and neet to be call into a `async` function  
-   b) `loadFile()` takes a File as first argument  
+3. To use the package we need to create a new instance of `USDZLoader` and call the function `loadFile()` on it.  
+   a) `loadFile()` is an asynchronous function and neet to be call into a `async` function.  
+   b) `loadFile()` takes a File as first argument.  
   
-- Within App.vue, add `data()` to the `export default`
+      - Within App.vue, add `data()` to the `export default`, it will hold the data we will fetch with Axios API.
 
-```js
-data() {
-  return {
-    modelData: null,
-    loading: true,
-  };
-},
-```
+         ```js
+         data() {
+           return {
+             modelData: null,
+             loading: true,
+           };
+         },
+         ```
+   
+      - Call the async function `loadUSDZ()` passing the axios' fetched file as argument
 
-- Use `Axios` to fetch the binary file for the .usdz
+         ```js
+         async function loadUSDZ(modelData, group) {
+           const file = new File([modelData], "model.usdz", {
+             type: "model/vnd.usdz+zip",
+           });
+           return await loader.loadFile(file, group);
+         }
+         ```
 
-```js
-axios
-  .get("/livingroom.usdz", {
-    responseType: "arraybuffer",
-  })
-  .then((response) => {
-    this.modelData = response.data;
-    this.loading = false;
-    // do something with the model data here
-    loadUSDZ(this.modelData, group);
-  });
-```
+      - Use `Axios` to fetch the binary file given the path of our .usdz file.
 
-- Call the async function `loadUSDZ()` passing the axios' fetched file as argument
+         ```js
+         axios
+           .get("/livingroom.usdz", {
+             responseType: "arraybuffer",
+           })
+           .then((response) => {
+             this.modelData = response.data;
+             this.loading = false;
+             // do something with the model data here
+             loadUSDZ(this.modelData, group);
+           });
+         ```
 
-```js
-async function loadUSDZ(modelData, group) {
-  const file = new File([modelData], "model.usdz", {
-    type: "model/vnd.usdz+zip",
-  });
-  return await loader.loadFile(file, group);
-}
-```
+
 
 ### Conclusion:
 IT WORKS !  
