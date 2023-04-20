@@ -119,7 +119,7 @@ c) You can remove everything within the `/src/assets` and `components`.
 ### Ponahoum's three-usdz-loader package
 12. Remove the code for the cube and it's animation
 13. Install packages with `npm install three-usdz-loader` and `npm install axios`.
-14. Modify the `vite.config.js` file to allow `SharedArrayBuffer` and define `public`folder.
+14. Modify the `vite.config.js` file to allow `SharedArrayBuffer` and define `public` folder.
       ```js
       server: {
          publicDir: "public",
@@ -131,11 +131,7 @@ c) You can remove everything within the `/src/assets` and `components`.
       ```
 15. Copy files from `/node_modules/three-usdz-loader/external` to `public` folder.
 
-16. Add imports to `App.vue` <script>:  
-         ```js
-         import { USDZLoader } from "three-usdz-loader";
-         import axios from "axios";
-         ```  
+16. Add `import { USDZLoader } from "three-usdz-loader"` and `import axios from "axios";` to `App.vue` <script>.
 17. Add the `.usdz` file into the `public` directory.
 18. To use the package we need to create a new instance of `USDZLoader` and call the function `loadFile()` on it.  
    a) `loadFile()` is an asynchronous function and neet to be call into a `async` function.  
