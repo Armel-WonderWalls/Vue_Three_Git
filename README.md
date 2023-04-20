@@ -34,45 +34,64 @@ c) You can remove everything within the `src/assets` and `components`.
 
    ```html
    <script>
+   // Importing the Three.js library
    import * as THREE from "three";
-
+   
+   // Exporting a Vue.js component
    export default {
      mounted() {
+       // Accessing the canvas element from the template
        const canvas = this.$refs.canvas;
+       
+       // Creating a WebGL renderer and attaching it to the canvas element
        const renderer = new THREE.WebGLRenderer({ canvas });
+       
+       // Setting the size of the renderer to the full size of the window
        renderer.setSize(window.innerWidth, window.innerHeight);
 
+       // Creating a Three.js scene
        const scene = new THREE.Scene();
-
+       
+       // Creating a camera with perspective projection
        const camera = new THREE.PerspectiveCamera(
-         75,
-         window.innerWidth / window.innerHeight,
-         0.1,
-         1000
+         75, // Field of view (FOV) in degrees
+         window.innerWidth / window.innerHeight, // Aspect ratio
+         0.1, // Near clipping plane
+         1000 // Far clipping plane
        );
-
+       
+       // Creating a cube mesh with a green basic material
        const geometry = new THREE.BoxGeometry(1, 1, 1);
-       const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-       const cube = new THREE.Mesh(geometry, material);
-       scene.add(cube);
+       const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Green color
+       const cube = new THREE.Mesh(geometry, material); // Combining the geometry and material into a mesh
+       scene.add(cube); // Adding the cube mesh to the scene
 
+       // Positioning the camera away from the origin
        camera.position.z = 5;
 
+       // Defining an animation loop using requestAnimationFrame
        function animate() {
-         requestAnimationFrame(animate);
+         requestAnimationFrame(animate); // Scheduling the next frame to be rendered
+         
+         // Rotating the cube mesh around its x and y axes
          cube.rotation.x += 0.01;
          cube.rotation.y += 0.01;
+         
+         // Rendering the scene with the camera using the WebGL renderer
          renderer.render(scene, camera);
        }
-
+       
+       // Starting the animation loop
        animate();
-
+       
+       // Handling window resize events by updating the camera aspect ratio and renderer size
        function onWindowResize() {
          camera.aspect = window.innerWidth / window.innerHeight;
          camera.updateProjectionMatrix();
          renderer.setSize(window.innerWidth, window.innerHeight);
        }
-
+       
+       // Registering the window resize event listener
        window.addEventListener("resize", onWindowResize);
      },
    };
