@@ -118,10 +118,12 @@ c) You can remove everything within the `/src/assets` and `components`.
 
 ### Ponahoum's three-usdz-loader package
 
-1. Install package:  
-   `npm install three-usdz-loader`  
-2. Add import to `App.vue` <script>:  
-   `import { USDZLoader } from "three-usdz-loader"`  
+1. Install packages with `npm install three-usdz-loader` and `npm install axios`.  
+2. Add imports to `App.vue` <script>:  
+   ```js
+   import { USDZLoader } from "three-usdz-loader";
+   import axios from "axios";
+   ```  
 3. To use the package we need to create a new instance of `USDZLoader` and call the function `loadFile()` on it.  
    a) `loadFile()` is an asynchronous function and neet to be call into a `async` function.  
    b) `loadFile()` takes a File as first argument.  
