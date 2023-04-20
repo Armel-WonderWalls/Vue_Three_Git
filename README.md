@@ -117,14 +117,15 @@ c) You can remove everything within the `/src/assets` and `components`.
 11. After it, you can run the app using the command line `npm run dev`, and you should have a rotating cube in the middle of your browser. The base project is now complete!
 
 ### Ponahoum's three-usdz-loader package
-
-1. Install packages with `npm install three-usdz-loader` and `npm install axios`.  
-2. Add imports to `App.vue` <script>:  
-   ```js
-   import { USDZLoader } from "three-usdz-loader";
-   import axios from "axios";
-   ```  
-3. To use the package we need to create a new instance of `USDZLoader` and call the function `loadFile()` on it.  
+12. Remove the code for the cube and it's animation
+13. Install packages with `npm install three-usdz-loader` and `npm install axios`.  
+14. Add imports to `App.vue` <script>:  
+         ```js
+         import { USDZLoader } from "three-usdz-loader";
+         import axios from "axios";
+         ```  
+15. Add the `.usdz` file into the `public` directory.
+16. To use the package we need to create a new instance of `USDZLoader` and call the function `loadFile()` on it.  
    a) `loadFile()` is an asynchronous function and neet to be call into a `async` function.  
    b) `loadFile()` takes a File as first argument.  
   
@@ -142,6 +143,9 @@ c) You can remove everything within the `/src/assets` and `components`.
       - Call the async function `loadUSDZ()` passing the axios' fetched file as argument
 
          ```js
+         const loader = new USDZLoader();
+         const group = new THREE.Group();
+         scene.add(group);
          async function loadUSDZ(modelData, group) {
            const file = new File([modelData], "model.usdz", {
              type: "model/vnd.usdz+zip",
